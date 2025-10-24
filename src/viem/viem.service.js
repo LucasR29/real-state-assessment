@@ -14,12 +14,14 @@ class ViemService {
     }
 
     async callContract(address, abi, functionName, args = []) {
-        return await this.client.readContract({
+        const result = await this.client.readContract({
             address: address,
             abi: abi,
             functionName: functionName,
             args: args,
         });
+        process.stdout.write(`${functionName}: ${result}\n`);
+        return result;
     }
 }
 
